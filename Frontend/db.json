@@ -1,0 +1,66 @@
+{
+  "category": [
+    {
+      "id": 2,
+      "name": "Shirts"
+    },
+    {
+      "id": 3,
+      "name": "Pants"
+    },
+    {
+      "id": 4,
+      "name": "My Dress"
+    },
+    {
+      "id": 5,
+      "name": "Coat"
+    },
+    {
+      "id": 6,
+      "name": "Women"
+    },
+    {
+      "name": "Men",
+      "id": 7
+    }
+  ],
+  "products": [
+    {
+      "id": 2,
+      "name": "Watch",
+      "price": "100000",
+      "categoryid": "5",
+      "description": "hi, Watch description, It's The best Watch in the world.",
+      "img": "https://img.fruugo.com/product/5/48/196059485_max.jpg",
+      "IsAvailble": true
+    },
+    {
+      "id": 3,
+      "name": "Slash Tshirt",
+      "price": "200000",
+      "categoryid": "6",
+      "description": "hi, Watch description, It's The best Watch in the world. ",
+      "img": "https://img.fruugo.com/product/0/40/170439400_0340_0340.jpg",
+      "IsAvailble": true
+    },
+    {
+      "id": 5,
+      "name": "Pants",
+      "price": "12300000",
+      "categoryid": "6",
+      "description": "hi, Watch description, It's The best Watch in the world. ",
+      "img": "https://img.fruugo.com/product/3/45/183164453_0340_0340.jpg",
+      "IsAvailble": ""
+    },
+    {
+      "name": "Watch pro",
+      "price": "590000",
+      "categoryid": "6",
+      "description": "hi, Watch description, It's The best Watch in the world. f",
+      "img": "https://img.fruugo.com/product/1/62/185718621_0340_0340.jpg",
+      "IsAvailble": true,
+      "id": 6
+    }
+  ]
+}

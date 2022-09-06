@@ -1,0 +1,20 @@
+<div class="container-fluid bg-white">
+    <div class="container">
+        <div class="col-12 h-30" style="height:100px"></div>
+        <div class="row">
+            <div class="col-lg-3" *ngFor="let item of products">
+                <div class="card h-100">
+                    <img src="{{item.img}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{item.name}}</h5>
+                        <p class="card-text">{{item.description}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="fw-bold">Price: {{item.price}}</small>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

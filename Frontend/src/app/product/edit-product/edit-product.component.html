@@ -1,0 +1,171 @@
+<p>edit-product works!</p>
+<div class="container">
+    
+    
+         <div class="col-auto shadow  m-5 p-4 bg-light"> 
+                   <button type="submit" class="col-md-12 m-2 p-2 btn btn-success d-flex justify-content-center"
+                   data-bs-toggle="modal" data-bs-target="#AddModal">Add New Product</button>
+        </div>
+    
+    
+        <div class="container-fluid bg-white">
+            <div class="container">
+                <div class="row ">
+                    <div class="card shadow m-1 col-12 " *ngFor="let product of products">
+    
+                        <div class=" row">
+                            <img src="{{product.img}}" class="col-2 bg-dark" alt="..." style="width:100px;">
+                            <div class="col-md-8 m-1">
+                                <h5 class="card-title">{{product.name}}</h5>
+                                <p class="card-text">{{product.description}}</p>
+                                <small class="fw-bold">Price: {{product.price}}</small>
+                            </div>
+                            <div class="col-md-auto m-3 d-flex justify-content-end">
+                                <div class="justify-content-end">
+                                    <button class="btn btn-success m-3 " (click)="setCurrentProductToModal(product)" data-bs-toggle="modal" data-bs-target="#UpdateModal">Edit</button>
+                                    <button class="btn btn-danger" (click)="setCurrentProductToModal(product)" data-bs-toggle="modal" data-bs-target="#DeleteModal">Delete</button>
+                                  </div>
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    
+    
+       
+<!--Update Modal -->
+<div class="modal fade" id="UpdateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered">
+        <div class="modal-content">
+            <form class="row m-4" (submit)="EditProduct(productformContentEdit.value)" #productformContentEdit="ngForm">
+                <div class="col-md-4">
+                    <label for="validationDefault01" class="form-label"> name</label>
+                    <input type="hidden" class="form-control" name="id" required [(ngModel)]="currentProduct.id">
+                    <input type="text" class="form-control" name="name" required [(ngModel)]="currentProduct.name">
+                </div>
+                <div class="col-md-4">
+                    <label for="validationDefault02" class="form-label">price</label>
+                    <input type="text" class="form-control" name="price"  required [(ngModel)]="currentProduct.price" >
+                </div>
+                <div class="col-md-4">
+                    <label for="validationDefault04" class="form-label">Category</label>
+                    <select class="form-select" name="categoryid" required [(ngModel)]="currentProduct.categoryid" >
+                        <option value="{{ctg.id}}" *ngFor="let ctg of categories">{{ctg.name}}</option>
+                    </select>
+                </div>
+                <div class="col-md-12">
+                    <label for="validationDefaultUsername" class="form-label">Description</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="description" aria-describedby="inputGroupPrepend2"
+                         required [(ngModel)]="currentProduct.description" >
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <label for="validationDefaultUsername" class="form-label">Product Image</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control m-1" name="img" aria-describedby="inputGroupPrepend2"
+                         required [(ngModel)]="currentProduct.img" >
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="input-group">
+                        <input type="checkbox" class=" m-1" name="IsAvailble" aria-describedby="inputGroupPrepend2"
+                         required id="checkking"  [(ngModel)]="currentProduct.IsAvailble">
+                         <label for="checkking"> Is Availble </label>
+                         <!-- [checked]="currentProduct.IsAvilble"  -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" data-bs-dismiss="modal" class="btn btn-success">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+     
+<!--Add Modal -->
+<div class="modal fade" id="AddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered">
+        <div class="modal-content">
+            <form class="row m-4" (submit)="AddProduct(productformContentAdd.value)" #productformContentAdd="ngForm">
+                <div class="col-md-4">
+                    <label for="validationDefault01" class="form-label"> name</label>
+                   <input type="text" class="form-control" name="name" required  ngModel>
+                </div>
+                <div class="col-md-4">
+                    <label for="validationDefault02" class="form-label">price</label>
+                    <input type="text" class="form-control" name="price"  required ngModel >
+                </div>
+                <div class="col-md-4">
+                    <label for="validationDefault04" class="form-label">Category</label>
+                    <select class="form-select" name="categoryid" required ngModel>
+                        <option value="{{ctg.id}}" *ngFor="let ctg of categories">{{ctg.name}}</option>
+                    </select>
+                </div>
+                <div class="col-md-12">
+                    <label for="validationDefaultUsername" class="form-label">Description</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="description" aria-describedby="inputGroupPrepend2"
+                         required ngModel >
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <label for="validationDefaultUsername" class="form-label">Product Image</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control m-1" name="img" aria-describedby="inputGroupPrepend2"
+                         required ngModel >
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="input-group">
+                        <input type="checkbox" class=" m-1" name="IsAvailble" aria-describedby="inputGroupPrepend2"
+                         required value="Is Availble"  ngModel>
+                         <label for="IsAvailble"> Is Availble </label>
+                         <!-- [checked]="currentProduct.IsAvilble"  -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" data-bs-dismiss="modal" class="btn btn-success">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+    
+    
+    
+     
+    
+    
+    
+    
+    <!--Delete Modal -->
+    <div class="modal fade" id="DeleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered">
+            <div class="modal-content">
+                <form class="row g-3" (submit)="DeleteProduct(formContentDelete)" #formContentDelete>
+                    <div class="modal-body">
+    
+                        <p>Are you Sure To Delete
+                            <b>
+                                <mark>{{currentProduct.name}}</mark>
+                            </b> from Categories?</p>
+    
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Yes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
